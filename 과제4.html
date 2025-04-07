@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>장혜원 과제4</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Hahmlet:wght@100..900&display=swap');
+
+       body { margin:0px; 
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: url("b.jpg");
+            background-size: cover;
+            font-family: "Gamja Flower", Helvetica, sans-serif;
+            font-size: 20pt;
+        }
+        
+         
+        img {
+           position: absolute; 
+           transition: transform 0.2s ease-in;
+           }
+        img:hover {
+           filter: drop-shadow(0 0 15px rgb(255, 255, 255));
+           transform: scale(1.2);   
+        }
+
+        #햄스터말{
+            position: absolute;
+            background-color: #fffae0d2;
+        }
+
+        .showtmi{
+            display: none;
+            font-size: 15px;
+            
+        }
+        
+        .tmi{
+            position: absolute;
+            font-size:22px;
+        }
+        .tmi:hover{
+            font-size:25px;
+            background-color: #fffae0d2;
+          }
+    </style>
+  
+</head>
+  <body onLoad="popupWindow();">
+    
+    <div class="tmi" onClick="tmiClick()"><b>tmi</b></div>
+    <div class="showtmi" id="contents">
+         <div class="chotmi"><br><br><b><li>초콜릿:</b> 테오브로민과 카페인이 심장에 부담을 주고, 중추신경계를 자극하여 극심한 스트레스를 유발함</li></div>
+         <div class="chotmi"><li><b>아보카도:</b> 페르신이라는 독성 물질이 소화기관과 심장에 영향을 미침</li></div>
+         <div class="chotmi"><li><b>양파:</b> 혈액 내 적혈구를 파괴할 수 있음</li></div>
+    </div>
+    
+    
+
+    <div class="오답" onClick="wrongClick()">
+        <img class="초콜릿" src="cho.png" style="left:40vw; top:15vh; width:15vw;">
+        <img class="아보카도" src="avo.png" style="left:50vw; top:70vh; width:16vw;">
+        <img class="양파" src="oni.png" style="left:70vw; top:50vh; width:12vw;">   
+    </div>
+    
+    <img id="밀웜"  onClick="answerClick()" src="mw.png" style="left:65vw; top:30vh; width:12vw;;">
+    
+    <div id="햄스터클릭" onClick="hahaClick()"><img id="햄스터이미지" src="Hamster.png" style="left:10vw; top:40vh; width:23vw"></div>
+    <div id="햄스터말" style="left:33vw; top:50vh;">하이</div>
+    
+    <script>
+        function tmiClick(){
+            let show= document.getElementById("contents")
+            show.style.display = "block";
+        }
+
+        alert("화면에 있는 햄스터를 클릭해보세요");
+
+        let title=["배고파..","내가","좋아하는","음식이","뭔지","맞혀봐"];
+        let index = 0;
+        let rot = 0;
+
+        function hahaClick(){
+            let hi= document.getElementById("햄스터말");
+            hi.innerHTML = title[index];
+            index = (index + 1) % title.length;
+
+
+            let ham= document.getElementById("햄스터이미지");
+            rot= rot + 50;
+            ham.style.transform = "rotate("+rot+"deg)";
+            ham.style.transition = "transform 0.6s ease-in-out";
+
+           }
+
+        
+        let no=["퉤.퉤.","웱!","omg","다른 거!","아니야!"]
+        function wrongClick(){
+            alert("땡! 틀렸습니다");
+            let nono = document.getElementById("햄스터말")
+            let randomnum = parseInt(Math.random()*5);
+            nono.innerHTML=""+no[randomnum]+""
+            
+            let re = document.getElementById("햄스터이미지");
+            re.style.left = "10vw";
+            re.style.top = "40vh";
+            re.style.transition = "left 0.4s ease-in, top 0.4s ease-in";
+            let ret = document.getElementById("햄스터말");
+            ret.style.left = "33vw";
+            ret.style.top = "50vh";
+            ret.style.transition = "left 0.4s ease-in, top 0.4s ease-in";
+        }
+
+        function answerClick(){
+            alert("ding dong dang 정답!");
+            let jump = document.getElementById("햄스터이미지");
+            jump.style.left = "48vw";
+            jump.style.top = "12vh";
+            jump.style.transition = "left 1s ease-in, top 1s ease-in";
+
+            let jj= document.getElementById("햄스터말");
+            jj.style.left = "70vw";
+            jj.style.top = "22vh";
+            jj.style.transition = "left 1s ease-in, top 1s ease-in";
+            jj.innerHTML ="냠냠"
+        }
+
+        
+        
+      
+    </script>
+    
+
+    
+</body>
+</html>
